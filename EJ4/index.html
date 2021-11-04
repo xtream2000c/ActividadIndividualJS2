@@ -9,17 +9,26 @@
 <body>
 
     <form onsubmit="return false">
-        <label for="contraseña">Contraseña (Minimo 10 caracteres, 1 mayuscula, 1 minuscula, 1 numero, y un caracter especial):</label> <br>
-        <input type="password" id="contraseña" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{10,}$">
+        <label for="pass">Contraseña (Minimo 10 caracteres, 1 mayuscula, 1 minuscula, 1 numero, y un caracter especial)</label> <br>
+        <input type="password" id="pass" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{10,}$">
         <br>
         <br>
         <input type="submit" onclick="comprobar()">
     </form>
+
     <br>
+
     <p id="Respuesta"></p>
 
     <script>
 
+        function comprobar(){
+            
+            var pass = document.getElementById("pass").value;
+
+            alert(pass);
+
+        }
     </script>    
 
 </body>

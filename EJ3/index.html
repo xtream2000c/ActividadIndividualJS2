@@ -26,16 +26,18 @@
             var numero = document.getElementById("numero").value;
 
             var numeroInvertido =  -Number(numero);
+
+            var numeroImprime = numero;
             
             while (numero != numeroInvertido-1) {
 
                 var linea = "";
-
+                
                 if(numero>0){
                     
                     for (let i = 0; i < numero; i++) {
-                    
-                        linea = linea + " " + numero.toString();
+                        
+                        linea = linea + " " + (numeroImprime-numero+1).toString();
                     
                     }
 
@@ -45,7 +47,7 @@
                     
                     for (let i = 0; i < Math.abs(numero); i++) {
                     
-                        linea = linea + " " + Math.abs(numero).toString();
+                        linea = linea + " " + (Math.abs(numeroImprime) + 1 - Math.abs(numero)).toString();
             
                     }
 

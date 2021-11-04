@@ -9,8 +9,8 @@
 <body>
 
     <form onsubmit="return false">
-        <label for="contraseña">Contraseña</label>
-        <input type="text" id="contraseña">
+        <label for="contraseña">Contraseña (Minimo 10 caracteres, 1 mayuscula, 1 minuscula, 1 numero, y un caracter especial):</label> <br>
+        <input type="password" id="contraseña" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{10,}$">
         <br>
         <br>
         <input type="submit" onclick="comprobar()">
@@ -19,7 +19,7 @@
     <p id="Respuesta"></p>
 
     <script>
-    
+
     </script>    
 
 </body>

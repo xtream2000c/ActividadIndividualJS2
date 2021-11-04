@@ -7,6 +7,33 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <form onsubmit="return false">
+        <label for="Cadena">Cadena de caracteres</label>
+        <input type="text" id="Cadena">
+        <br>
+        <br>
+        <input type="submit" onclick="cadenaInversa()">
+    </form>
+    <br>
+    <p id="Respuesta"></p>
+    <script>
+
+        function cadenaInversa(){
+
+            var cadenaIntroducida = document.getElementById('Cadena').value;
+            var cadenaRespuesta = "";
+
+            for (var i = cadenaIntroducida.length -1; i >= 0; i--) {
+                
+                cadenaRespuesta = cadenaRespuesta + cadenaIntroducida[i];
+
+            }
+
+            document.getElementById("Respuesta").innerHTML = cadenaRespuesta;
+
+        }
+
+
+    </script>
 </body>
 </html>

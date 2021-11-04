@@ -5,8 +5,63 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
-    
+    <form onsubmit="return false">
+        <label for="numero">Inserte numero</label>
+        <input type="text" id="numero">
+        <br>
+        <br>
+        <input type="submit" onclick="piramides()">
+    </form>
+    <br>
+    <p id="Respuesta"></p>
+
+    <script>
+        
+        
+        function piramides() {
+
+            var numero = document.getElementById("numero").value;
+
+            var numeroInvertido =  -Number(numero);
+            
+            while (numero != numeroInvertido-1) {
+
+                var linea = "";
+
+                if(numero>0){
+                    
+                    for (let i = 0; i < numero; i++) {
+                    
+                        linea = linea + " " + numero.toString();
+                    
+                    }
+
+                    document.write("<p>"+linea + "</p>");
+
+                }else if(numero < 0){
+                    
+                    for (let i = 0; i < Math.abs(numero); i++) {
+                    
+                        linea = linea + " " + Math.abs(numero).toString();
+            
+                    }
+
+                    document.write("<p>"+linea + "</p>");
+
+                }
+
+                numero--;
+                
+            }
+
+            
+        }
+
+
+    </script>
+
 </body>
 </html>

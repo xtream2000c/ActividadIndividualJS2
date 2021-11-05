@@ -26,8 +26,32 @@
             
             var pass = document.getElementById("pass").value;
 
+            var minuscula = 0;
+            var mayuscula = 0;
+            var numero = 0;
+
             alert(pass);
 
+            for(var i = 0; i<pass.length; i++){
+
+                if(pass.charCodeAt(i) >= 97 && pass.charCodeAt(i) <= 122){
+                    
+                    minuscula++;
+                    alert("Codigo Minuscula: " + pass.charCodeAt(i));
+
+                }else if(pass.charCodeAt(i) >= 65 && pass.charCodeAt(i) <= 90){
+                    
+                    mayuscula++;
+                    alert("Codigo Mayuscula: " + pass.charCodeAt(i));
+
+                }else if(pass.charCodeAt(i) >= 48 && pass.charCodeAt(i) <= 57){
+                    
+                    numero++;
+                    alert("Codigo Numero: " + pass.charCodeAt(i));
+
+                }
+
+            }
             //If 10% pass es simbolo && 20% numeros && 30% Mayusc o Minusc
             //Fuerte
             //If 10% pass es simbolo && (20% numeros || 30% Mayusc o Minusc)

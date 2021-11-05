@@ -10,7 +10,7 @@
 
     <form onsubmit="return false">
         <label for="pass">Contraseña (Minimo 10 caracteres, 1 mayuscula, 1 minuscula, 1 numero, y un caracter especial)</label> <br>
-        <input type="password" id="pass" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{10,}$">
+        <input type="password" id="pass">
         <br>
         <br>
         <input type="submit" onclick="comprobar()">
@@ -29,35 +29,170 @@
             var minuscula = 0;
             var mayuscula = 0;
             var numero = 0;
-
-            alert(pass);
+            var simbolo = 0;
 
             for(var i = 0; i<pass.length; i++){
 
                 if(pass.charCodeAt(i) >= 97 && pass.charCodeAt(i) <= 122){
                     
                     minuscula++;
-                    alert("Codigo Minuscula: " + pass.charCodeAt(i));
 
                 }else if(pass.charCodeAt(i) >= 65 && pass.charCodeAt(i) <= 90){
                     
                     mayuscula++;
-                    alert("Codigo Mayuscula: " + pass.charCodeAt(i));
 
                 }else if(pass.charCodeAt(i) >= 48 && pass.charCodeAt(i) <= 57){
                     
                     numero++;
-                    alert("Codigo Numero: " + pass.charCodeAt(i));
+
+                }else if((pass.charCodeAt(i) >= 33 && pass.charCodeAt(i) <= 47) || (pass.charCodeAt(i) >= 58 && pass.charCodeAt(i) <= 64) || (pass.charCodeAt(i) >= 91 && pass.charCodeAt(i) <= 96) || (pass.charCodeAt(i) >= 123 && pass.charCodeAt(i) <= 126)){
+                    
+                    simbolo++;
 
                 }
 
             }
-            //If 10% pass es simbolo && 20% numeros && 30% Mayusc o Minusc
-            //Fuerte
-            //If 10% pass es simbolo && (20% numeros || 30% Mayusc o Minusc)
-            //Media
-            //If 10% pass es simbolo 
-            //debil
+
+            if(simbolo >= 1 && numero >= 1 && mayuscula >= 1 && minuscula >= 1){
+                
+                var porcentajeSim=0;
+                var porcentajeNum=0;
+                var cadena = pass.length;
+                porcentajeNum = (numero*100)/cadena;
+                porcentajeSim = (simbolo*100)/cadena;
+
+                var seguridad = 0;
+
+                if (mayuscula>minuscula) {
+                        
+                        var porcentajeMin = 0;
+
+                        porcentajeMin = ((minuscula*100)/mayuscula);
+                        
+                    if (porcentajeSim > 10) {
+
+                        seguridad += 1;
+
+                    }else{
+
+                        seguridad -= 1;
+
+                    }
+                    if (porcentajeNum > 20) {
+
+                        seguridad += 1;
+
+                    }else{
+
+                        seguridad -= 1;
+
+                    }
+                    if (porcentajeMin > 30) {
+
+                        seguridad += 1;
+
+                    }else{
+
+                        seguridad -= 1;
+                        
+                    }
+
+                    alert("Porcentaje Min: "+porcentajeMin);
+                    alert("Porcentaje Sim: "+porcentajeSim);
+                    alert("Porcentaje Num: "+porcentajeNum);
+
+                    switch (seguridad) {
+                        case 1:
+                            
+                            document.getElementById("Respuesta").innerHTML= "La contraseña es de fuerza: Debil";
+                        
+                        break;
+                        case 2:
+                            
+                            document.getElementById("Respuesta").innerHTML= "La contraseña es de fuerza: Media";
+                        
+                        break;
+                        case 3:
+                            
+                            document.getElementById("Respuesta").innerHTML= "La contraseña es de fuerza: Alta";
+                        
+                        break;
+                    
+                        default:
+                        
+                            document.getElementById("Respuesta").innerHTML= "La contraseña es de fuerza: Debil";
+                        
+                        break;
+                    }
+
+                }else{
+
+                    var porcentajeMayus = 0;
+
+                    porcentajeMayus = ((mayuscula*100)/minuscula);
+
+                    if (porcentajeSim > 10) {
+
+                        seguridad += 1;
+
+                    }else{
+
+                        seguridad -= 1;
+
+                    }
+                    if (porcentajeNum > 20) {
+
+                     seguridad += 1;
+
+                    }else{
+
+                        seguridad -= 1;
+
+                    }
+                    if (porcentajeMayus > 30) {
+
+                        seguridad += 1;
+
+                    }else{
+
+                        seguridad -= 1;
+
+                    }
+
+                    alert("Porcentaje Mayus: "+porcentajeMayus);
+                    alert("Porcentaje Sim: "+porcentajeSim);
+                    alert("Porcentaje Num: "+porcentajeNum);
+
+                    switch (seguridad) {
+                        case 1:
+                            
+                            document.getElementById("Respuesta").innerHTML= "La contraseña es de fuerza: Media";
+                        
+                        break;
+                        case 2:
+                            
+                            document.getElementById("Respuesta").innerHTML= "La contraseña es de fuerza: Media";
+                        
+                        break;
+                        case 3:
+                            
+                            document.getElementById("Respuesta").innerHTML= "La contraseña es de fuerza: Alta";
+                        
+                        break;
+                    
+                        default:
+                        
+                            document.getElementById("Respuesta").innerHTML= "La contraseña es de fuerza: Debil";
+                        
+                        break;
+                    }
+
+                }
+            }else{
+
+                document.getElementById("Respuesta").innerHTML= "La contraseña no es valida, no cumple con el formato requerido";
+
+            }
             
         }
     </script>    

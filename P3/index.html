@@ -7,6 +7,28 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <form onsubmit="return false">
+        <label for="minP">Minimo pulgadas: </label> <br>
+        <input type="text" id="minP">
+        <br>
+        <label for="maxP">Maximo pulgadas: </label> <br>
+        <input type="text" id="maxP">
+        <br>
+        <br>
+        <input type="submit" onclick="comprobar()">
+    </form>
+
+    <br>
+
+    <p id="Respuesta"></p>
+
+    <script>
+        
+        var min = document.getElementById("minP").value;
+        var max = document.getElementById("maxP").value;
+
+        
+
+    </script>
 </body>
 </html>

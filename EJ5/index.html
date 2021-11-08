@@ -8,11 +8,11 @@
 </head>
 <body>
     <form onsubmit="return false">
-        <label for="pass">Operacion: </label> <br>
-        <input type="password" id="pass">
+        <label for="cadena">Operacion: </label> <br>
+        <input type="text" id="cadena">
         <br>
         <br>
-        <input type="submit" onclick="comprobar()">
+        <input type="submit" onclick="operar()">
     </form>
 
     <br>
@@ -20,9 +20,60 @@
     <p id="Respuesta"></p>
 
     <script>
-        
+        function operar(){
+        var respuesta = '';
+        var respuestas = '';
+        var resultado = 0;
 
+        var cadena = document.getElementById('cadena').value;
+        var cadenaInicial = cadena;
+        var numero1 = cadena.substring(0,1);   
+        cadena = cadena.substring(1,cadena.length);  
+        var operacion = '';
+        for (var i = 0; i < cadena.length; i++) {
+            
+            var operador = cadena.substring(i,1+i);
+            var numero2 = cadena.substring(1+i,2+i);
+            
+            switch (operador) {
+                case '+':
+                resultado = Number(numero1)+Number(numero2);
+                respuesta = "Suma: " + numero1.toString()+" + "+numero2.toString()+ " = " + resultado;
+                numero1 = resultado;
+                    break;
+                case '-':
+                resultado = Number(numero1)-Number(numero2);
+                respuesta = "Resta: " + numero1.toString()+" - "+numero2.toString() + " = " + resultado;
+                numero1 = resultado;
+                    break;
+                case '*':
+                resultado = Number(numero1)*Number(numero2);
+                respuesta = "Multiplicacion: " + numero1.toString()+" * "+numero2.toString()+ " = " + resultado;
+                numero1 = resultado;
+                    break;
+                case '/':
+                resultado = Number(numero1)/Number(numero2);
+                respuesta = "Division: " + numero1.toString()+" / "+numero2.toString()+ " = " + resultado;
+                numero1 = resultado;
+                break;
+                case '%':
+                resultado = Number(numero1)%Number(numero2);
+                respuesta = "Resto: " + numero1.toString()+" % "+numero2.toString()+ " = " + resultado;
+                numero1 = resultado;
+                    break;
+                
+            
+            }
 
+            
+            respuestas += respuesta + "<br>";
+            
+
+        }
+        var resultadoFinal = resultado;
+        respuestas += "El resultado de " + cadenaInicial + " = " + resultadoFinal; 
+        document.getElementById('Respuesta').innerHTML=respuestas;
+    }
     </script>
 </body>
 </html>

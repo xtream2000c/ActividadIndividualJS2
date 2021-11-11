@@ -30,11 +30,14 @@
 
             }else{
 
-                var i = 0;
+                var i = 1;
+                var j = 1;
+
 
                 function bucle() {
                         
                     setTimeout(respuestaP, 1000);
+                    
                 }
 
                 bucle();
@@ -44,25 +47,34 @@
                         document.getElementById("respuesta").innerHTML="Tiempo: "+i;
                         
                         i++;
-                        
+
+                        j++;
+
+                        cambiacolor();
+
                         if (i < segundos) {
                             bucle();
                         }
+
                     }
 
-                
-                
             }
 
-            
             setTimeout(function(){document.getElementById("respuesta").innerHTML="Se acabo el tiempo ";}, (segundos)*1000);
-            
 
+            setInterval(cambiacolor, 1000);
+
+                function cambiacolor() {
+
+                        j++;
+
+                        if(j%2!=0){
+                            document.body.style.backgroundColor="red";
+                        }else{
+                            document.body.style.backgroundColor="white";
+                        }
+            }
         }
-
-        
-
-        
 
     </script>
 </body>

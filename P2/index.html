@@ -16,15 +16,53 @@
         <input type="submit" onclick="cronometro()">
     </form>
 
+    <p id="respuesta"></p>
+
     <script>
 
         function cronometro() {
             
             var segundos = document.getElementById("segundos").value;
 
+            if (segundos<0){
+
+                alert("Introduce un valor positivo de segundos.");
+
+            }else{
+
+                var i = 0;
+
+                function bucle() {
+                        
+                    setTimeout(respuestaP, 1000);
+                }
+
+                bucle();
+
+                function respuestaP() {
+                        
+                        document.getElementById("respuesta").innerHTML="Tiempo: "+i;
+                        
+                        i++;
+                        
+                        if (i < segundos) {
+                            bucle();
+                        }
+                    }
+
+                
+                
+            }
+
+            
+            setTimeout(function(){document.getElementById("respuesta").innerHTML="Se acabo el tiempo ";}, (segundos)*1000);
             
 
         }
+
+        
+
+        
 
     </script>
 </body>

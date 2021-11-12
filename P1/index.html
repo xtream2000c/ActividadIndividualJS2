@@ -5,10 +5,87 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="css/estilo.css">
 </head>
 <body>
     
-    
+    <script>
+
+        var entrada = "Cuadro Velazquez,6000;Cabeza de Elefante,9000;Silla del Rey,4500;Pipa de indio,450;"
+        var cadenas = entrada.split(';');
+        var cadena = '';
+        var palabra;
+        var objetos = [];
+        var respuesta = 'DESORDENADA: <br> <table><tr><th>Pujador</th><th>Cantidad</th></tr>';
+        for (let i = 0; i < cadenas.length-1; i++) {
+            
+            cadena = cadenas[i];
+            
+            palabra = cadena.split(',');
+
+            objetos[i] ={pujador: palabra[0] , valor: palabra[1]};
+            
+            respuesta = respuesta + '<tr><td>'+ objetos[i].pujador +'</td><td>'+ objetos[i].valor +'</td></tr>';
+        
+        }
+
+
+        respuesta = respuesta + '</table><br>';
+
+        respuesta += 'ORDENADA POR NOMBRE: <br> <table><tr><th>Pujador</th><th>Cantidad</th></tr>';
+        objetos.sort(ordenarNombre);
+        for (let j = 0; j < objetos.length; j++) {
+
+            respuesta = respuesta + '<tr><td>'+ objetos[j].pujador +'</td><td>'+ objetos[j].valor +'</td></tr>';
+        
+        }
+
+
+        respuesta = respuesta + '</table><br>';
+
+        respuesta += 'ORDENADA POR PUJA: <br> <table><tr><th>Pujador</th><th>Cantidad</th></tr>';
+        objetos.sort(ordenarValores);
+        for (let k = 0; k < objetos.length; k++) {
+            
+            respuesta = respuesta + '<tr><td>'+ objetos[k].pujador +'</td><td>'+ objetos[k].valor +'</td></tr>';
+        
+        }
+
+
+        respuesta = respuesta + '</table><br>';
+
+
+        document.write(respuesta);
+
+
+        function ordenarNombre(a, b){
+
+            var nombreOb1 = a.pujador;
+
+            var nombreOb2 = b.pujador;
+
+            if (nombreOb1 < nombreOb2) {
+                
+                return -1;
+
+            }
+
+            if (nombreOb1 > nombreOb2) {
+                
+                return 1;
+
+            }
+
+            return 0;
+
+        }
+
+        function ordenarValores(a, b){
+            
+            return b.valor-a.valor;
+        
+        }
+    </script>
 
 </body>
 </html>

@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="css/estilo.css">
 </head>
 <body>
     <form onsubmit="return false">
@@ -24,19 +25,35 @@
 
     <script>
         
-        var min = document.getElementById("minP").value;
-        var max = document.getElementById("maxP").value;
+        function comprobar(){
 
-        if (max < min){
-            alert('Los parametros introducidos son erroneos, las pulgadas maximas no pueden ser menores que las minimas.')
-        }else{
+            var min = Number(document.getElementById("minP").value);
+            var max = Number(document.getElementById("maxP").value);
 
-            var respuesta = '';
+            if (max < min){
+                alert('Los parametros introducidos son erroneos, las pulgadas maximas no pueden ser menores que las minimas.')
+            }else{
 
-            
+                var respuesta = '<table><tr><th>Pulgadas</th><th>Ancho(cm)</th><th>Alto(cm)</th></tr>';
+                var diferencia = max - min;
+                var pulgadas = min;
+                var ancho = 0;
+                var alto = 0;
+                for (let i = 0; i < diferencia+1; i++) {
+                    ancho = pulgadas * 2.21;
+                    alto = pulgadas * 1.245;
+                    var respuesta = respuesta + '<tr><td>'+ pulgadas +'</td><td>'+ ancho.toFixed(2) +'</td><td>'+ alto.toFixed(2) +'</td></tr>';
+                    pulgadas++;
 
+                }
+                
+                
+
+                respuesta = respuesta + '</table>';
+
+                document.getElementById("Respuesta").innerHTML= respuesta;
+            }
         }
-
     </script>
 </body>
 </html>
